@@ -8,7 +8,7 @@ sudo apt-get update
 
 sudo apt-get --yes --quiet install ntp
 
-mysql DEBIAN FRONTEND=noninteractive apt-get --yes --quiet install mysql-server mysql-client libmysql-java
+sudo mysql DEBIAN FRONTEND=noninteractive apt-get --yes --quiet install mysql-server mysql-client libmysql-java
 mysqladmin --user=root password foobar
 
 sudo service msql stop
