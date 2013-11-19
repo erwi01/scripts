@@ -22,5 +22,5 @@ create user 'droid'@'localhost' identified by 'droid';
 grant all on DroidChat.* to 'droid'@'localhost';
 flush privileges;
 EOT
-mysql --user=droid --passord=droid --table --execute='show databases;' DroidChat
+mysql --user=droid --password=droid --table --execute='show databases;' DroidChat
 
