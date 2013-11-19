@@ -10,7 +10,7 @@ sudo apt-get --yes --quiet install ntp
 date
 
 sudo DEBIAN_FRONTEND=noninteractive apt-get --yes --quiet install mysql-server mysql-client libmysql-java
-#mysqladmin --user=root password foobar
+mysqladmin --user=root password foobar
 
 sudo service mysql stop
 sudo sed --in-place=.orig --expression='s/^bind-address.*$/bind-address=0.0.0.0/' /etc/mysql/my.cnf
@@ -18,8 +18,8 @@ sudo service mysql start
 sudo service mysql status
 
 mysql --user=root --password=foobar <<"EOT"
-#create database DroidChat;
-#create user 'droid'@'localhost' identified by 'droid';
+create database DroidChat;
+create user 'droid'@'localhost' identified by 'droid';
 grant all on DroidChat.* to 'droid'@'localhost';
 flush privileges;
 EOT
@@ -29,7 +29,7 @@ sudo apt-get --yes --quiet install openjdk-7-jre-headless
 java -version
 
 sudo apt-get --yes --quiet install tomcat7 tomcat7-admin
-#(cd /usr/share/tomcat7/lib; sudo ln -s ../../java/mysql.jar)
+(cd /usr/share/tomcat7/lib; sudo ln -s ../../java/mysql.jar)
 sudo service tomcat7 status
 
 sudo apt-get --yes --quiet install nginx
