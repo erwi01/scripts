@@ -32,3 +32,29 @@ sudo apt-get --yes --quiet install tomcat7 tomcat7-admin
 (cd /usr/share/tomcat7/lib; sudo ln -s ../../java/mysql.jar)
 sudo service tomcat7 status
 
+sudo apt-get --yes -- quiet install nginx
+sudo service nginx stop
+
+sudo rm /etc/nginx/sites-enabled/*
+sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
+sudo bash -c 'cat > /etc/nginx/sites-available/default'<<"EOT"
+server {
+    listen 80;
+    location / {
+      client_max_body_size    100M;
+      client_body_buffer_size 1M;
+      proxy_read_timeout      720s;
+      proxy_set_header  X-Forwarded-Host      $host;
+      proxy_set_header  X-Forwarded-Server    $host;
+      proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+      proxy_set_header  Host  $host;
+      proxy_pass        http://127.0.0.1:8080;
+    }
+}
+EOT
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+sudo service nginx start
+sudo service nginx status
+
+      
