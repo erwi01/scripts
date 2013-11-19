@@ -17,7 +17,7 @@ sudo service mysql start
 sudo service mysql status
 
 mysql --user=root --password=foobar <<"EOT"
-create database DroidChat;
+#create database DroidChat;
 create user 'droid'@'localhost' identified by 'droid';
 grant all on DroidChat.* to 'droid'@'localhost';
 flush privileges;
