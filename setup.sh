@@ -29,7 +29,7 @@ sudo apt-get --yes --quiet install openjdk-7-jre-headless
 java -version
 
 sudo apt-get --yes --quiet install tomcat7 tomcat7-admin
-(cd /usr/share/tomcat7/lib; sudo ln -s ../../java/mysql.jar)
+#(cd /usr/share/tomcat7/lib; sudo ln -s ../../java/mysql.jar)
 sudo service tomcat7 status
 
 sudo apt-get --yes -- quiet install nginx
