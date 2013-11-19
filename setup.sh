@@ -7,6 +7,7 @@ set -e
 sudo apt-get update
 
 sudo apt-get --yes --quiet install ntp
+date
 
 sudo DEBIAN_FRONTEND=noninteractive apt-get --yes --quiet install mysql-server mysql-client libmysql-java
 #mysqladmin --user=root password foobar
@@ -23,4 +24,11 @@ grant all on DroidChat.* to 'droid'@'localhost';
 flush privileges;
 EOT
 mysql --user=droid --password=droid --table --execute='show databases;' DroidChat
+
+sudo apt-get --yes --quiet install openjdk-7-jre-headless
+java -version
+
+sudo apt-get --yes --quiet install tomcat7 tomcat7-admin
+(cd /usr/share/tomcat7/lib; sudo ln -s ../../java/mysql.jar)
+sudo service tomcat7 status
 
