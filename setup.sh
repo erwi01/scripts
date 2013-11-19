@@ -32,7 +32,7 @@ sudo apt-get --yes --quiet install tomcat7 tomcat7-admin
 #(cd /usr/share/tomcat7/lib; sudo ln -s ../../java/mysql.jar)
 sudo service tomcat7 status
 
-sudo apt-get --yes -- quiet install nginx
+sudo apt-get --yes --quiet install nginx
 sudo service nginx stop
 
 sudo rm /etc/nginx/sites-enabled/*
